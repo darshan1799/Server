@@ -1,19 +1,16 @@
 const express = require('express');
 const app = express();
-const {MongoClient} = require('mongodb');
-// let url = "mongodb://localhost:27017/";
-let url = "mongodb+srv://darshan:sutariya@cluster01.qdsxihd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster01"
-let connect = new MongoClient(url);
+
 require('dotenv');
+let PostModel = require("./MongoDb");
 
 app.use(express.json());
 
-app.post('/',async(req,res)=>
-{
-    let db = connect.db("Post");
-    let collection = db.collection("PostData");
-    let result =await collection.insertOne(req.body);
-    res.send(result);
+app.post('/post-data',async(req,res)=>
+{  
+    let post = new PostModel(req.body);
+    let response =await post.save();
+    res.send(response);
 });
 app.listen(process.env.PORT||2000,()=>
 {
