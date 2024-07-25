@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const {MongoClient} = require('mongodb');
-let url = "mongodb://localhost:27017/";
+// let url = "mongodb://localhost:27017/";
+let url = "mongodb+srv://darshan:sutariya@cluster01.qdsxihd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster01"
 let connect = new MongoClient(url);
 require('dotenv');
 
