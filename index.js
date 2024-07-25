@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.post('/',async(req,res)=>
 {
-    let db = connect.db("post");
+    let db = connect.db("Post");
     let collection = db.collection("PostData");
     let result =await collection.insertOne(req.body);
     res.send(result);
