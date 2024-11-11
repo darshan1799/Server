@@ -1,0 +1,12 @@
+name: Scheduled Task
+
+on:
+  schedule:
+    - cron: '9 22 * * *'  # This means 22:09 (10:09 PM UTC) every day
+
+jobs:
+  run-task:
+    runs-on: ubuntu-latest  # GitHub's cloud environment
+    steps:
+      - name: Trigger Render Server
+        run: curl -X POST https://agrierp-backand-server.onrender.com
